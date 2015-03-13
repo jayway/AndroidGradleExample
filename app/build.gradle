@@ -16,6 +16,28 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            applicationIdSuffix ".dev"
+        }
+    }
+
+    //These dimensions are only here for demonstration purposes.
+    flavorDimensions "abi", "version"
+
+    productFlavors {
+        freeapp {
+            flavorDimension "version"
+        }
+        paidapp {
+            flavorDimension "version"
+        }
+
+        x86 {
+            flavorDimension "abi"
+        }
+        arm {
+            flavorDimension "abi"
+        }
     }
 }
 
@@ -23,3 +45,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.3'
 }
+
+apply from: "../artifacts.gradle"
